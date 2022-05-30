@@ -1,0 +1,12 @@
+const http = require('http')
+const path = require('path')
+const express = require('express')
+const socketio = require('socket.io')
+const app = express()
+const server = http.createServer(app)
+const io = socketio(server)
+const publicDirectoryPath = path.join(__dirname, '../public')
+app.use(express.static(publicDirectoryPath))
+server.listen(5000, () => {
+    console.log(`Server is listening on port 5000 `)
+})
